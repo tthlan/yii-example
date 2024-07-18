@@ -10,6 +10,26 @@ use yii\bootstrap5\Html;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+
+use yii\helpers\Url;
+use app\assets\AppAsset;
+use yii\web\View;
+
+AppAsset::register($this);
+
+// Add js on page
+$this->registerJsFile(
+    Url::to('@web/js/login.js'),
+    [
+        'depends' => [\yii\web\JqueryAsset::className()],
+        'position' => View::POS_BEGIN, // This will place the script at the end of the body section
+    ]
+);
+
+// Add css on page
+// $this->registerCssFile("@web/css/style.css", [
+//     'depends' => [\yii\web\YiiAsset::className()],
+// ]);
 ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
