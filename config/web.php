@@ -43,17 +43,21 @@ $config = [
         ],
         'mongodb' => [
             'class' => '\yii\mongodb\Connection',
-            'dsn' => 'mongodb://localhost:27017',
+            'dsn' => 'mongodb://localhost:27017/test',
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'post/create' => 'post/create',
+                'post/<id:\w+>' => 'post/view',
+                'contact/<id:\w+>' => 'contact/view',
+                'contact/posts/<id:\w+>' => 'contact/postbyemail',
+                'contact/update/<id:\w+>' => 'contact/update',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
